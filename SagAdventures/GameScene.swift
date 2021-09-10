@@ -10,151 +10,72 @@ import SpriteKit
 import GameplayKit
 
 func +(left: CGPoint, right: CGPoint) -> CGPoint {
-  return CGPoint(x: left.x + right.x, y: left.y + right.y)
+    return CGPoint(x: left.x + right.x, y: left.y + right.y)
 }
 
 func -(left: CGPoint, right: CGPoint) -> CGPoint {
-  return CGPoint(x: left.x - right.x, y: left.y - right.y)
+    return CGPoint(x: left.x - right.x, y: left.y - right.y)
 }
 
 func *(point: CGPoint, scalar: CGFloat) -> CGPoint {
-  return CGPoint(x: point.x * scalar, y: point.y * scalar)
+    return CGPoint(x: point.x * scalar, y: point.y * scalar)
 }
 
 func /(point: CGPoint, scalar: CGFloat) -> CGPoint {
-  return CGPoint(x: point.x / scalar, y: point.y / scalar)
+    return CGPoint(x: point.x / scalar, y: point.y / scalar)
 }
 
 #if !(arch(x86_64) || arch(arm64))
 func sqrt(a: CGFloat) -> CGFloat {
-  return CGFloat(sqrtf(Float(a)))
+    return CGFloat(sqrtf(Float(a)))
 }
 #endif
 
 extension CGPoint {
-  func length() -> CGFloat {
-    return sqrt(x*x + y*y)
-  }
-  
-  func normalized() -> CGPoint {
-    return self / length()
-  }
+    func length() -> CGFloat {
+        return sqrt(x*x + y*y)
+    }
+    
+    func normalized() -> CGPoint {
+        return self / length()
+    }
 }
 
 class GameScene: SKScene {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
     
-    let enemy = SKSpriteNode(imageNamed: SagAdventuresGameSceneChildName.enemy.rawValue)
+    //    let enemy = SKSpriteNode(imageNamed: SagAdventuresGameSceneChildName.enemy.rawValue)
     
-   
-    
-    
-    
-    
-    
-    
+    lazy var playAbleRect: CGRect = {
+        let maxAspectRatio: CGFloat = 18.5/8.0 // iPhone 12"Pro Max
+        let maxAspectRatioWidth = self.size.height / maxAspectRatio
+        let playableMargin = (self.size.width - maxAspectRatioWidth) / 3.0
+        return CGRect(x: playableMargin, y: 0, width: maxAspectRatioWidth, height: self.size.height)
+    }()
     
     override func didMove(to view: SKView) {
         
-//        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.anchorPoint = CGPoint(x: 0.1, y: 0.2)
         createHero()
         
-        
-        
-        print(self.size.width * 0.1)
-        
-        // Get label node from scene and store it for use later
-//        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-//        if let label = self.label {
-//            label.alpha = 0.0
-//            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
+    }
     
     
-//        // Create shape node to use during mouse interaction
-//        let w = (self.size.width + self.size.height) * 0.05
-//        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-//
-//        if let spinnyNode = self.spinnyNode {
-//            spinnyNode.lineWidth = 2.5
-//
-//            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-//            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-//                                              SKAction.fadeOut(withDuration: 0.5),
-//                                              SKAction.removeFromParent()]))
-//        }
-//    }
     
-    
-//    func touchDown(atPoint pos : CGPoint) {
-//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-//            n.position = pos
-//            n.strokeColor = SKColor.green
-//            self.addChild(n)
-//        }
-//    }
-//
-//    func touchMoved(toPoint pos : CGPoint) {
-//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-//            n.position = pos
-//            n.strokeColor = SKColor.blue
-//            self.addChild(n)
-//        }
-//    }
-//
-//    func touchUp(atPoint pos : CGPoint) {
-//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-//            n.position = pos
-//            n.strokeColor = SKColor.red
-//            self.addChild(n)
-//        }
-//    }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if let label = self.label {
-//            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-//        }
-//
-//        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-//    }
-//
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-//    }
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-//    }
-//
-//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-//    }
-
-    
+    // MARK: - Create Hero
     func createHero() {
-       
-        let sag = SKSpriteNode(imageNamed: SagAdventuresGameSceneChildName.heroName.rawValue)
         
+        let sag = SKSpriteNode(imageNamed: SagAdventuresGameSceneChildName.heroName.rawValue)
         
         let newHeight = sag.size.height / 4
         let newWidth = sag.size.width / 4
-        
         let heroSize = CGSize(width: newWidth, height: newHeight)
         sag.size = heroSize
         
-        sag.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-        
-//        let xPosition: CGFloat = UIScreen.main.bounds.width / 20 - sag.size.width / 2
-//        let yPosition: CGFloat = UIScreen.main.bounds.height / 2 * 0.5 - sag.size.height / 2
-//        print(xPosition, yPosition)
-//        sag.position = CGPoint(x: xPosition, y: yPosition)
-        
-        
-        
-        
-//
+        let xPosition: CGFloat = (DefinedScreenWidth * 0.01)
+        let yPosition: CGFloat = (sag.size.height * 0.05)
+        print("Sag init pos: (\(xPosition), \(yPosition))")
+        sag.position = CGPoint(x: xPosition, y: yPosition)
         
         addChild(sag)
     }

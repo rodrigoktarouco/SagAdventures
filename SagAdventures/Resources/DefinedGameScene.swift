@@ -8,12 +8,14 @@
 import Foundation
 import SpriteKit
 
+let DefinedScreenWidth = UIScreen.main.bounds.width
+let DefinedScreenHeight = UIScreen.main.bounds.height
 
 enum SagAdventuresGameSceneChildName: String {
     case heroName = "Sag"
     case scoreName = "score"
     case retryName = "retry"
-    case enemy = "enemy"
+    case enemyName = "enemy"
 }
 
 enum SagAdventuresGameSceneActionKey: String {

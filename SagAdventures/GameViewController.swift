@@ -14,13 +14,20 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let scene = GameScene(size: view.bounds.size)
-        let skView = view as! SKView
-        skView.showsFPS = false
-        skView.showsNodeCount = false
-        skView.ignoresSiblingOrder = true
-        scene.scaleMode = .resizeFill
-        skView.presentScene(scene)
+        if let view = self.view as! SKView? {
+            let screenSize = CGSize(width: DefinedScreenWidth, height: DefinedScreenHeight)
+            
+            let scene = GameScene(size: screenSize)
+            
+            scene.scaleMode = .resizeFill
+            view.presentScene(scene)
+        
+            view.showsFPS = false
+            view.showsNodeCount = false
+            view.ignoresSiblingOrder = true
+            view.showsPhysics = true
+            
+        }
 
     }
 
