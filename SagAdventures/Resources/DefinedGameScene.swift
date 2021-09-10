@@ -10,9 +10,10 @@ import SpriteKit
 
 
 enum SagAdventuresGameSceneChildName: String {
-    case heroName = "heroName"
+    case heroName = "Sag"
     case scoreName = "score"
     case retryName = "retry"
+    case enemy = "enemy"
 }
 
 enum SagAdventuresGameSceneActionKey: String {
