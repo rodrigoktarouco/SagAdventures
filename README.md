@@ -1,3 +1,3 @@
 # SagAdventures
 
-Gaming created for a Apple's Academy Nano Challenge. 
+Gaming created for an Apple's Academy Nano Challenge. 
