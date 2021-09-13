@@ -15,6 +15,8 @@
 		9DB6CA1726EBC81200928E0F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6CA1626EBC81200928E0F /* GameViewController.swift */; };
 		9DB6CA1A26EBC81200928E0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB6CA1826EBC81200928E0F /* Main.storyboard */; };
 		9DB6CA1C26EBC81300928E0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DB6CA1B26EBC81300928E0F /* Assets.xcassets */; };
+		FA46EC7726EFC9B300ECD9F6 /* RunSagRun.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */; };
+		FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */; };
 		9DE4E93126EFC64500FE8C6A /* politicaextrabold.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E92926EFC64500FE8C6A /* politicaextrabold.png */; };
 		9DE4E93226EFC64500FE8C6A /* Politica Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E92A26EFC64500FE8C6A /* Politica Bold.otf */; };
 		9DE4E93326EFC64500FE8C6A /* POLITICA-BLACK.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E92B26EFC64500FE8C6A /* POLITICA-BLACK.otf */; };
@@ -36,6 +38,8 @@
 		9DB6CA1926EBC81200928E0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9DB6CA1B26EBC81300928E0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DB6CA1D26EBC81300928E0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RunSagRun.sks; sourceTree = "<group>"; };
+		FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRun.swift; sourceTree = "<group>"; };
 		9DE4E92926EFC64500FE8C6A /* politicaextrabold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = politicaextrabold.png; sourceTree = "<group>"; };
 		9DE4E92A26EFC64500FE8C6A /* Politica Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Politica Bold.otf"; sourceTree = "<group>"; };
 		9DE4E92B26EFC64500FE8C6A /* POLITICA-BLACK.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POLITICA-BLACK.otf"; sourceTree = "<group>"; };
@@ -87,13 +91,15 @@
 				9DE4E92826EFC4F900FE8C6A /* Fonts */,
 				8061FDFF26EBD8BB0072C04C /* Resources */,
 				9DB6CA0E26EBC81200928E0F /* AppDelegate.swift */,
-				9DB6CA1026EBC81200928E0F /* GameScene.sks */,
 				9DB6CA1226EBC81200928E0F /* Actions.sks */,
 				9DB6CA1426EBC81200928E0F /* GameScene.swift */,
+				9DB6CA1026EBC81200928E0F /* GameScene.sks */,
 				9DB6CA1626EBC81200928E0F /* GameViewController.swift */,
 				9DB6CA1826EBC81200928E0F /* Main.storyboard */,
 				9DB6CA1B26EBC81300928E0F /* Assets.xcassets */,
 				9DB6CA1D26EBC81300928E0F /* Info.plist */,
+				FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */,
+				FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */,
 			);
 			path = SagAdventures;
 			sourceTree = "<group>";
@@ -176,6 +182,7 @@
 				9DE4E93426EFC64500FE8C6A /* Politica Bold Italic.otf in Resources */,
 				9DE4E93126EFC64500FE8C6A /* politicaextrabold.png in Resources */,
 				9DB6CA1126EBC81200928E0F /* GameScene.sks in Resources */,
+				FA46EC7726EFC9B300ECD9F6 /* RunSagRun.sks in Resources */,
 				9DE4E93626EFC64500FE8C6A /* POLITICA-EXTRABOLD.otf in Resources */,
 				9DB6CA1C26EBC81300928E0F /* Assets.xcassets in Resources */,
 				9DB6CA1326EBC81200928E0F /* Actions.sks in Resources */,
@@ -194,6 +201,7 @@
 			files = (
 				8061FE0126EBD9030072C04C /* DefinedGameScene.swift in Sources */,
 				9DB6CA1526EBC81200928E0F /* GameScene.swift in Sources */,
+				FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */,
 				9DB6CA1726EBC81200928E0F /* GameViewController.swift in Sources */,
 				9DB6CA0F26EBC81200928E0F /* AppDelegate.swift in Sources */,
 			);
