@@ -12,6 +12,7 @@ class RunSagRun: SKScene {
     let gameCamera = SKCameraNode()
     var ground: SKSpriteNode = SKSpriteNode()
     var sag: SKSpriteNode = SKSpriteNode()
+    var sagRunning = [SKTexture]()
 
     override func didMove(to view: SKView) {
         guard let scene = self.scene else { return }
@@ -57,6 +58,12 @@ class RunSagRun: SKScene {
 
         sag.physicsBody = SKPhysicsBody(rectangleOf: sag.size)
 
+        let textureAtlas = SKTextureAtlas(named: "SagRunning")
+        for index in 0..<textureAtlas.textureNames.count {
+            let textureName = "Sag\(index)"
+            sagRunning.append(textureAtlas.textureNamed(textureName))
+        }
+
         self.addChild(sag)
     }
 
@@ -64,6 +71,7 @@ class RunSagRun: SKScene {
     func runSag() {
         let moveAction = SKAction.moveBy(x: 2, y: 0, duration: 0.01)
         let repeatAction = SKAction.repeat(moveAction, count: 500)
+        sag.run(SKAction.repeatForever(SKAction.animate(with: sagRunning, timePerFrame: 0.1)))
         sag.run(repeatAction)
     }
 
