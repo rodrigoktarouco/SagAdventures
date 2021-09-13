@@ -37,6 +37,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Politica Bold Italic.otf</string>
+		<string>Politica Bold.otf</string>
+		<string>POLITICA-BLACK.otf</string>
+		<string>POLITICA-BOLD.otf</string>
+		<string>POLITICA-BOLDITALIC.otf</string>
+		<string>POLITICA-EXTRABOLD.otf</string>
+		<string>POLITICA-EXTRABOLDITALIC.otf</string>
+		<string>politicaextrabold.png</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
