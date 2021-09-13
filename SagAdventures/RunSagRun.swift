@@ -11,7 +11,7 @@ import GameplayKit
 class RunSagRun: SKScene {
     let gameCamera = SKCameraNode()
     var ground: SKSpriteNode = SKSpriteNode()
-    var player: SKSpriteNode = SKSpriteNode()
+    var sag: SKSpriteNode = SKSpriteNode()
 
     override func didMove(to view: SKView) {
         guard let scene = self.scene else { return }
@@ -23,8 +23,8 @@ class RunSagRun: SKScene {
     }
 
     override func update(_ currentTime: TimeInterval) {
-        if player.position.x > gameCamera.position.x {
-            gameCamera.position.x = player.position.x
+        if sag.position.x > gameCamera.position.x {
+            gameCamera.position.x = sag.position.x
         }
     }
 
@@ -49,25 +49,61 @@ class RunSagRun: SKScene {
     }
 
     func createPlayer(scene: SKScene) {
-        player = SKSpriteNode(imageNamed: "Sag")
-        player.position = CGPoint(x: 30, y: 200)
-        player.zPosition = CGFloat(1.0)
-        player.size.width = CGFloat(123.0)
-        player.size.height = CGFloat(128.0)
+        sag = SKSpriteNode(imageNamed: "Sag")
+        sag.position = CGPoint(x: 30, y: 200)
+        sag.zPosition = CGFloat(1.0)
+        sag.size.width = CGFloat(123.0)
+        sag.size.height = CGFloat(128.0)
 
-        player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
+        sag.physicsBody = SKPhysicsBody(rectangleOf: sag.size)
 
-        self.addChild(player)
+        self.addChild(sag)
     }
 
     // MARK: Sag actions
     func runSag() {
         let moveAction = SKAction.moveBy(x: 2, y: 0, duration: 0.01)
         let repeatAction = SKAction.repeat(moveAction, count: 500)
-        player.run(repeatAction)
+        sag.run(repeatAction)
     }
 
     func jumpSag() {
-        player.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 600.0))
+        sag.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 600.0))
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+      // 1 - Choose one of the touches to work with
+      guard let touch = touches.first else {
+        return
+      }
+      let touchLocation = touch.location(in: self)
+      
+      // 2 - Set up initial location of projectile
+      let projectile = SKSpriteNode(imageNamed: "projectile")
+        projectile.position = sag.position
+      
+      // 3 - Determine offset of location to projectile
+      let offset = touchLocation - projectile.position
+      
+      // 4 - Bail out if you are shooting down or backwards
+      if offset.x < 0 { return }
+      
+      // 5 - OK to add now - you've double checked position
+      addChild(projectile)
+      
+      // 6 - Get the direction of where to shoot
+      let direction = offset.normalized()
+      
+      // 7 - Make it shoot far enough to be guaranteed off screen
+      let shootAmount = direction * 1000
+      
+      // 8 - Add the shoot amount to the current position
+      let realDest = shootAmount + projectile.position
+      
+      // 9 - Create the actions
+      let actionMove = SKAction.move(to: realDest, duration: 2.0)
+      let actionMoveDone = SKAction.removeFromParent()
+      projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+    }
+    
 }
