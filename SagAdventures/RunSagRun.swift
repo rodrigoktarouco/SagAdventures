@@ -44,7 +44,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
                 SKAction.wait(forDuration: 4.0)
                 ])
             ))
-}
+        
         self.physicsWorld.contactDelegate = self
     }
 
@@ -228,8 +228,3 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         }
     }
 }
-
-extension RunSagRun: SKPhysicsContactDelegate {
-    
-}
-
