@@ -15,14 +15,18 @@ struct PhysicsCategory {
   static let projectile: UInt32 = 0b10      // 2
 }
 
-
-class RunSagRun: SKScene {
+class RunSagRun: SKScene, SKPhysicsContactDelegate {
     var backgroundSprite = SKSpriteNode()
     let gameCamera = SKCameraNode()
-    var ground: SKSpriteNode = SKSpriteNode()
-    var sag: SKSpriteNode = SKSpriteNode()
+    var ground = SKSpriteNode()
+    var sag = SKSpriteNode()
     var sagRunning = [SKTexture]()
+    var cage = SKSpriteNode()
     var touchableJumpArea = SKSpriteNode()
+
+    let sagCategory: UInt32 = 0x00000001 << 0
+    let cageCategory: UInt32 = 0x00000001 << 1
+
 
     override func didMove(to view: SKView) {
         guard let scene = self.scene else { return }
@@ -32,6 +36,7 @@ class RunSagRun: SKScene {
         createGround(scene: scene)
         createSag(scene: scene)
         createTouchableJumpArea(scene: scene)
+        createCage(scene: scene)
         runSag()
         run(SKAction.repeatForever(
               SKAction.sequence([
@@ -40,6 +45,8 @@ class RunSagRun: SKScene {
                 ])
             ))
 }
+        self.physicsWorld.contactDelegate = self
+    }
 
     override func update(_ currentTime: TimeInterval) {
         guard let scene = scene else { return }
@@ -76,6 +83,7 @@ class RunSagRun: SKScene {
 
         ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
         ground.physicsBody?.isDynamic = false
+        ground.physicsBody?.restitution = 0.0
 
         self.addChild(ground)
     }
@@ -88,6 +96,8 @@ class RunSagRun: SKScene {
         sag.size.height = CGFloat(128.0)
 
         sag.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: sag.size.width*0.6, height: sag.size.height), center: CGPoint(x: -16, y: 0))
+        sag.physicsBody?.restitution = 0.0
+        sag.physicsBody?.categoryBitMask = sagCategory
 
         let textureAtlas = SKTextureAtlas(named: "SagRunning")
         for index in 0..<textureAtlas.textureNames.count {
@@ -107,6 +117,21 @@ class RunSagRun: SKScene {
         touchableJumpArea.anchorPoint = CGPoint(x: 0, y: 0)
 
         addChild(touchableJumpArea)
+    }
+
+    func createCage(scene: SKScene) {
+        cage = SKSpriteNode(imageNamed: "Cage")
+        cage.position = CGPoint(x: scene.size.width/2, y: 100)
+        cage.zPosition = CGFloat(1.0)
+        cage.size = CGSize(width: cage.size.width*0.2, height: cage.size.height*0.2)
+
+        cage.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cage.size.width, height: cage.size.height))
+        cage.physicsBody?.restitution = 0.0
+        cage.physicsBody?.categoryBitMask = cageCategory
+        cage.physicsBody?.collisionBitMask = sagCategory
+        cage.physicsBody?.contactTestBitMask = sagCategory
+
+        addChild(cage)
     }
 
     // MARK: Sag actions
@@ -160,9 +185,8 @@ class RunSagRun: SKScene {
         let actionMove = SKAction.move(to: realDest, duration: 2.0)
         let actionMoveDone = SKAction.removeFromParent()
         projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
-    }
-    
-    // Monster positions
+    } 
+    // Enemy position
     func random() -> CGFloat {
       return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
     }
@@ -194,7 +218,15 @@ class RunSagRun: SKScene {
         let actionMoveDone = SKAction.removeFromParent()
         lumberjack.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
-    
+
+    // MARK: Physiscs contact delegate
+    func didBegin(_ contact: SKPhysicsContact) {
+        let collision: UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+
+        if collision == sagCategory | cageCategory {
+            print("sag morre")
+        }
+    }
 }
 
 extension RunSagRun: SKPhysicsContactDelegate {
