@@ -8,6 +8,13 @@
 import SpriteKit
 import GameplayKit
 
+struct PhysicsCategory {
+  static let none      : UInt32 = 0
+  static let all       : UInt32 = UInt32.max
+  static let enemy   : UInt32 = 0b1       // 1
+  static let projectile: UInt32 = 0b10      // 2
+}
+
 class RunSagRun: SKScene, SKPhysicsContactDelegate {
     var backgroundSprite = SKSpriteNode()
     let gameCamera = SKCameraNode()
@@ -31,7 +38,13 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         createTouchableJumpArea(scene: scene)
         createCage(scene: scene)
         runSag()
-
+        run(SKAction.repeatForever(
+              SKAction.sequence([
+                SKAction.run(addEnemy),
+                SKAction.wait(forDuration: 4.0)
+                ])
+            ))
+}
         self.physicsWorld.contactDelegate = self
     }
 
@@ -125,7 +138,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     func runSag() {
         let moveAction = SKAction.moveBy(x: 2, y: 0, duration: 0.01)
         let repeatAction = SKAction.repeat(moveAction, count: 500)
-        sag.run(SKAction.repeatForever(SKAction.animate(with: sagRunning, timePerFrame: 0.1)))
+        sag.run(SKAction.repeatForever(SKAction.animate(with: sagRunning, timePerFrame: 4)))
         sag.run(repeatAction)
     }
 
@@ -172,6 +185,38 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         let actionMove = SKAction.move(to: realDest, duration: 2.0)
         let actionMoveDone = SKAction.removeFromParent()
         projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+    } 
+    // Enemy position
+    func random() -> CGFloat {
+      return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+    }
+
+    func random(min: CGFloat, max: CGFloat) -> CGFloat {
+      return random() * (max - min) + min
+    }
+    
+    func addEnemy() {
+        
+        // Create sprite
+        let lumberjack = SKSpriteNode(imageNamed: "Sag")
+        
+        // Where the enemy is going to appear
+        let actualY =  lumberjack.size.height/2
+        
+        let actualX = size.width + lumberjack.size.width/2
+        
+        lumberjack.position = CGPoint(x: actualX, y: actualY)
+        
+        addChild(lumberjack)
+        
+        // Set enemy speed
+        let actualDuration = random(min: CGFloat(6), max: CGFloat(8))
+        
+        // Create the actions
+        let actionMove = SKAction.move(to: CGPoint(x: -lumberjack.size.width/2, y: actualY),
+                                       duration: TimeInterval(actualDuration))
+        let actionMoveDone = SKAction.removeFromParent()
+        lumberjack.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
 
     // MARK: Physiscs contact delegate
@@ -183,3 +228,8 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         }
     }
 }
+
+extension RunSagRun: SKPhysicsContactDelegate {
+    
+}
+
