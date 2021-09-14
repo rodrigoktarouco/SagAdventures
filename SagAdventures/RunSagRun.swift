@@ -53,6 +53,11 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
             ))
         
         self.physicsWorld.contactDelegate = self
+        
+        let backgroundMusic = SKAudioNode(fileNamed: "Mr.ruiZ - Jamaica Jive copy.mp3")
+        backgroundMusic.autoplayLooped = true
+        addChild(backgroundMusic)
+
     }
 
     override func update(_ currentTime: TimeInterval) {
