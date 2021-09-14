@@ -226,5 +226,31 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         if collision == sagCategory | cageCategory {
             print("sag morre")
         }
+        
+        var firstBody: SKPhysicsBody
+          var secondBody: SKPhysicsBody
+          if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+          } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+          }
+         
+          // 2
+          if ((firstBody.categoryBitMask & PhysicsCategory.enemy != 0) &&
+              (secondBody.categoryBitMask & PhysicsCategory.projectile != 0)) {
+            if let enemy = firstBody.node as? SKSpriteNode,
+              let projectile = secondBody.node as? SKSpriteNode {
+              projectileDidCollideWithEnemy(projectile: projectile, enemy: enemy)
+            }
+        }
     }
+    
+    func projectileDidCollideWithEnemy(projectile: SKSpriteNode, enemy: SKSpriteNode) {
+      print("Hit")
+      projectile.removeFromParent()
+      enemy.removeFromParent()
+    }
+
 }
