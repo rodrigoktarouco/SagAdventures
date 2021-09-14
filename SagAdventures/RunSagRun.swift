@@ -16,14 +16,20 @@ struct PhysicsCategory {
 }
 
 class RunSagRun: SKScene, SKPhysicsContactDelegate {
+    // MARK: Visual elements
     var backgroundSprite = SKSpriteNode()
     let gameCamera = SKCameraNode()
     var ground = SKSpriteNode()
     var sag = SKSpriteNode()
     var sagRunning = [SKTexture]()
     var cage = SKSpriteNode()
+
+    // MARK: UI elements
+    var pauseButton = SKSpriteNode()
+    var scoreboard = SKSpriteNode()
     var touchableJumpArea = SKSpriteNode()
 
+    // MARK: Physics categories
     let sagCategory: UInt32 = 0x00000001 << 0
     let cageCategory: UInt32 = 0x00000001 << 1
 
@@ -34,6 +40,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         createBackground(scene: scene)
         addCamera(scene: scene)
         createGround(scene: scene)
+        createUIElements()
         createSag(scene: scene)
         createTouchableJumpArea(scene: scene)
         createCage(scene: scene)
@@ -53,10 +60,23 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         if sag.position.x > gameCamera.position.x {
             gameCamera.position.x = sag.position.x
             touchableJumpArea.position.x = sag.position.x - scene.size.width/2
+            pauseButton.position.x = touchableJumpArea.position.x + 50
         }
     }
 
     // MARK: Game components
+    func createUIElements() {
+        pauseButton = SKSpriteNode(imageNamed: "Pause")
+        pauseButton.name = "Pause"
+        guard let view = view else { return }
+        pauseButton.position = CGPoint(x: touchableJumpArea.position.x + 50, y: view.bounds.maxY - pauseButton.size.height*0.6)
+        pauseButton.zPosition = CGFloat(5.0)
+        pauseButton.anchorPoint = CGPoint(x: 0, y: 0)
+        pauseButton.size = CGSize(width: pauseButton.size.width*0.4, height: pauseButton.size.height*0.4)
+
+        addChild(pauseButton)
+    }
+
     func createBackground(scene: SKScene) {
         backgroundSprite = SKSpriteNode(imageNamed: "Background")
         backgroundSprite.anchorPoint = CGPoint(x: 0, y: 0)
@@ -152,10 +172,20 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         guard let touch = touches.first else { return }
         let touchLocation = touch.location(in: self)
 
+        // MARK: Jump touch area
         if touchableJumpArea.frame.contains(touchLocation) {
             jumpSag()
         }
 
+        // MARK: Pause button
+        if pauseButton.frame.contains(touchLocation) {
+            if isPaused {
+                isPaused = false
+            } else {
+                isPaused = true
+            }
+        }
+        
         // 2 - Set up initial location of projectile
         let projectile = SKSpriteNode(imageNamed: "Orange")
         projectile.size = CGSize(width: projectile.size.width*0.5, height: projectile.size.height*0.5)
