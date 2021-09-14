@@ -200,7 +200,14 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         // Create sprite
         let lumberjack = SKSpriteNode(imageNamed: "Sag")
         
-        // Where the enemy is going to appear
+        lumberjack.physicsBody = SKPhysicsBody(rectangleOf: lumberjack.size) // 1
+        lumberjack.physicsBody?.isDynamic = false // 2
+        lumberjack.physicsBody?.categoryBitMask = PhysicsCategory.enemy // 3
+        lumberjack.physicsBody?.contactTestBitMask = PhysicsCategory.projectile // 4
+        lumberjack.physicsBody?.collisionBitMask = PhysicsCategory.none // 5
+
+        
+        // Where the enemy is going to appear 
         let actualY =  lumberjack.size.height/2
         
         let actualX = size.width + lumberjack.size.width/2
@@ -226,5 +233,31 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         if collision == sagCategory | cageCategory {
             print("sag morre")
         }
+        
+        var firstBody: SKPhysicsBody
+          var secondBody: SKPhysicsBody
+          if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+          } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+          }
+         
+          // 2
+          if ((firstBody.categoryBitMask & PhysicsCategory.enemy != 0) &&
+              (secondBody.categoryBitMask & PhysicsCategory.projectile != 0)) {
+            if let enemy = firstBody.node as? SKSpriteNode,
+              let projectile = secondBody.node as? SKSpriteNode {
+              projectileDidCollideWithEnemy(projectile: projectile, enemy: enemy)
+            }
+        }
     }
+    
+    func projectileDidCollideWithEnemy(projectile: SKSpriteNode, enemy: SKSpriteNode) {
+      print("Hit")
+      projectile.removeFromParent()
+      enemy.removeFromParent()
+    }
+
 }
