@@ -200,7 +200,14 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         // Create sprite
         let lumberjack = SKSpriteNode(imageNamed: "Sag")
         
-        // Where the enemy is going to appear
+        lumberjack.physicsBody = SKPhysicsBody(rectangleOf: lumberjack.size) // 1
+        lumberjack.physicsBody?.isDynamic = false // 2
+        lumberjack.physicsBody?.categoryBitMask = PhysicsCategory.enemy // 3
+        lumberjack.physicsBody?.contactTestBitMask = PhysicsCategory.projectile // 4
+        lumberjack.physicsBody?.collisionBitMask = PhysicsCategory.none // 5
+
+        
+        // Where the enemy is going to appear 
         let actualY =  lumberjack.size.height/2
         
         let actualX = size.width + lumberjack.size.width/2
