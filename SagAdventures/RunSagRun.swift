@@ -38,6 +38,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         guard let scene = self.scene else { return }
 
+        ObserveForGameControllers()
         createBackground(scene: scene)
         createBackground2(scene: scene)
         addCamera(scene: scene)
@@ -107,6 +108,9 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
 
         // 6 - Get the direction of where to shoot
         let direction = offset.normalized()
+        print(direction)
+        print(direction.x)
+        print(direction.y)
 
         // 7 - Make it shoot far enough to be guaranteed off screen
         let shootAmount = direction * 1000
