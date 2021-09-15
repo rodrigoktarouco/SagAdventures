@@ -50,6 +50,11 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
 //        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addEnemy), SKAction.wait(forDuration: 4.0)])))
         
         self.physicsWorld.contactDelegate = self
+        
+        let backgroundMusic = SKAudioNode(fileNamed: "Mr.ruiZ - Jamaica Jive copy.mp3")
+        backgroundMusic.autoplayLooped = true
+        addChild(backgroundMusic)
+
     }
 
     override func update(_ currentTime: TimeInterval) {
