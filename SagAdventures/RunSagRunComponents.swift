@@ -118,11 +118,20 @@ extension RunSagRun {
             cage.zPosition = CGFloat(1.0)
             cage.size = CGSize(width: cage.size.width * ratio, height: cage.size.height * ratio)
 
-            cage.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cage.size.width, height: cage.size.height))
+            cage.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cage.size.width, height: cage.size.height - 20))
             cage.physicsBody?.restitution = 0.0
             cage.physicsBody?.categoryBitMask = cageCategory
             cage.physicsBody?.collisionBitMask = sagCategory
             cage.physicsBody?.contactTestBitMask = sagCategory
+
+            let cageTop = SKSpriteNode()
+            cageTop.position = CGPoint(x: 0, y: 1)
+            cageTop.zPosition = CGFloat(1.0)
+            cageTop.size = CGSize(width: cage.size.width + 20, height: 10)
+            cageTop.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cageTop.size.width, height: cageTop.size.height))
+            cageTop.physicsBody?.restitution = 0.0
+
+            cage.addChild(cageTop)
 
             cagePositionX = cagePositionX + CGFloat(cagesGap)
 
@@ -140,5 +149,10 @@ extension RunSagRun {
 
     func jumpSag() {
         sag.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 320.0))
+    }
+
+    func rotateSag(by radians: Double) {
+        let rotateAction = SKAction.rotate(byAngle: CGFloat(radians), duration: 0.2)
+        sag.run(rotateAction)
     }
 }
