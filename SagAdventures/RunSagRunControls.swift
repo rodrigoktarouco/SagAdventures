@@ -51,11 +51,11 @@ extension RunSagRun {
             }
         } else if gamepad.buttonB == element {
             if gamepad.buttonB.value != 0 {
-                jumpSag()
+                rotateSag(by: -0.5)
             }
         } else if gamepad.buttonY == element {
             if gamepad.buttonY.value != 0 {
-                throwOrange(aim: aimingAngle(direcional: gamepad.leftThumbstick))
+                rotateSag(by: 0.5)
             }
         } else if gamepad.buttonX == element {
             if gamepad.buttonX.value != 0 {

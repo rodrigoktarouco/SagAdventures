@@ -33,8 +33,8 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     var currentScore = 0
     
     // MARK: Physics categories
-    let sagCategory: UInt32 = 0x00000001 << 0
-    let cageCategory: UInt32 = 0x00000001 << 1
+    let sagCategory: UInt32 = 0x00000001 << 10
+    let cageCategory: UInt32 = 0x00000001 << 11
     
     override func didMove(to view: SKView) {
         guard let scene = self.scene else { return }
@@ -45,7 +45,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         createUIElements()
         createSag(scene: scene)
         createTouchableJumpArea(scene: scene)
-        createCage(scene: scene, quantity: 10)
+        createCage(scene: scene, quantity: 16)
         runSag()
 //        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addEnemy), SKAction.wait(forDuration: 4.0)])))
         
