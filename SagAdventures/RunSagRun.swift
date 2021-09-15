@@ -35,11 +35,11 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     let sagCategory: UInt32 = 0x00000001 << 0
     let cageCategory: UInt32 = 0x00000001 << 1
 
-
     override func didMove(to view: SKView) {
         guard let scene = self.scene else { return }
 
         createBackground(scene: scene)
+        createBackground2(scene: scene)
         addCamera(scene: scene)
         createGround(scene: scene)
         createUIElements()
