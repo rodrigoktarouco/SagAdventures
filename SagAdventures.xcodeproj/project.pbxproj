@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8061FE0126EBD9030072C04C /* DefinedGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8061FE0026EBD9030072C04C /* DefinedGameScene.swift */; };
 		9D7B29AD26F13841007984FF /* Mr.ruiZ - Jamaica Jive copy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B29AC26F13841007984FF /* Mr.ruiZ - Jamaica Jive copy.mp3 */; };
+		9DA3608926F23CB800AD2166 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA3608826F23CB800AD2166 /* GameOverScene.swift */; };
 		9DB6CA0F26EBC81200928E0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6CA0E26EBC81200928E0F /* AppDelegate.swift */; };
 		9DB6CA1126EBC81200928E0F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9DB6CA1026EBC81200928E0F /* GameScene.sks */; };
 		9DB6CA1326EBC81200928E0F /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9DB6CA1226EBC81200928E0F /* Actions.sks */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		8061FE0026EBD9030072C04C /* DefinedGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinedGameScene.swift; sourceTree = "<group>"; };
 		9D7B29AC26F13841007984FF /* Mr.ruiZ - Jamaica Jive copy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mr.ruiZ - Jamaica Jive copy.mp3"; sourceTree = "<group>"; };
+		9DA3608826F23CB800AD2166 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		9DB6CA0B26EBC81200928E0F /* SagAdventures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SagAdventures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB6CA0E26EBC81200928E0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DB6CA1026EBC81200928E0F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */,
 				FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */,
 				FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */,
+				9DA3608826F23CB800AD2166 /* GameOverScene.swift */,
 				FA4AB06A26F22B6C0065FB4C /* RunSagRunControls.swift */,
 			);
 			path = SagAdventures;
@@ -219,6 +222,7 @@
 			files = (
 				8061FE0126EBD9030072C04C /* DefinedGameScene.swift in Sources */,
 				9DB6CA1526EBC81200928E0F /* GameScene.swift in Sources */,
+				9DA3608926F23CB800AD2166 /* GameOverScene.swift in Sources */,
 				FA4AB06B26F22B6C0065FB4C /* RunSagRunControls.swift in Sources */,
 				FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */,
 				FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */,
