@@ -26,6 +26,7 @@
 		9DE4E93826EFC64500FE8C6A /* POLITICA-BOLD.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E93026EFC64500FE8C6A /* POLITICA-BOLD.otf */; };
 		FA46EC7726EFC9B300ECD9F6 /* RunSagRun.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */; };
 		FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */; };
+		FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		9DE4E93026EFC64500FE8C6A /* POLITICA-BOLD.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POLITICA-BOLD.otf"; sourceTree = "<group>"; };
 		FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RunSagRun.sks; sourceTree = "<group>"; };
 		FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRun.swift; sourceTree = "<group>"; };
+		FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRunComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				9DB6CA1D26EBC81300928E0F /* Info.plist */,
 				FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */,
 				FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */,
+				FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */,
 			);
 			path = SagAdventures;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				8061FE0126EBD9030072C04C /* DefinedGameScene.swift in Sources */,
 				9DB6CA1526EBC81200928E0F /* GameScene.swift in Sources */,
 				FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */,
+				FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */,
 				9DB6CA1726EBC81200928E0F /* GameViewController.swift in Sources */,
 				9DB6CA0F26EBC81200928E0F /* AppDelegate.swift in Sources */,
 			);
