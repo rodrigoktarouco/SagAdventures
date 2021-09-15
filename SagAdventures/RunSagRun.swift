@@ -17,6 +17,7 @@ struct PhysicsCategory {
 
 class RunSagRun: SKScene, SKPhysicsContactDelegate {
     // MARK: Visual elements
+    var backgroundPositionX: CGFloat = 0.0
     var backgroundSprite = SKSpriteNode()
     let gameCamera = SKCameraNode()
     var ground = SKSpriteNode()
@@ -38,22 +39,21 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         guard let scene = self.scene else { return }
         ObserveForGameControllers()
-        createBackground(scene: scene)
-        createBackground2(scene: scene)
+        createBackground(scene: scene, length: 5)
         addCamera(scene: scene)
         createGround(scene: scene)
         createUIElements()
         createSag(scene: scene)
         createTouchableJumpArea(scene: scene)
-        createCage(scene: scene)
+        createCage(scene: scene, quantity: 10)
         runSag()
-        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addEnemy), SKAction.wait(forDuration: 4.0)])))
+//        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addEnemy), SKAction.wait(forDuration: 4.0)])))
         
         self.physicsWorld.contactDelegate = self
         
         let backgroundMusic = SKAudioNode(fileNamed: "Mr.ruiZ - Jamaica Jive copy.mp3")
         backgroundMusic.autoplayLooped = true
-        addChild(backgroundMusic)
+//        addChild(backgroundMusic)
         
     }
     
@@ -108,9 +108,6 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         
         // 6 - Get the direction of where to shoot
         let direction = offset.normalized()
-        print(direction)
-        print(direction.x)
-        print(direction.y)
         // 7 - Make it shoot far enough to be guaranteed off screen
         let shootAmount = direction * 1000
         
