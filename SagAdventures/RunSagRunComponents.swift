@@ -53,6 +53,17 @@ extension RunSagRun {
         addChild(backgroundSprite)
     }
 
+    func createBackground2(scene: SKScene) {
+        let backgroundSprite = SKSpriteNode(imageNamed: "Cenario infinito")
+        backgroundSprite.anchorPoint = CGPoint(x: 0, y: 0)
+        backgroundSprite.position = CGPoint(x: self.backgroundSprite.size.width, y: 0)
+        let ratioBgSize = scene.size.height / backgroundSprite.size.height
+        backgroundSprite.size = CGSize(width: backgroundSprite.size.width * ratioBgSize, height: scene.size.height)
+        backgroundSprite.zPosition = CGFloat(0.0)
+
+        addChild(backgroundSprite)
+    }
+
     func addCamera(scene: SKScene) {
         guard let view = view else { return }
         addChild(gameCamera)
