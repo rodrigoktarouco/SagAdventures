@@ -42,26 +42,17 @@ extension RunSagRun {
         addChild(scoreboard)
     }
 
-    func createBackground(scene: SKScene) {
-        backgroundSprite = SKSpriteNode(imageNamed: "Cenario infinito")
-        backgroundSprite.anchorPoint = CGPoint(x: 0, y: 0)
-        backgroundSprite.position = CGPoint(x: 0, y: 0)
-        let ratioBgSize = scene.size.height / backgroundSprite.size.height
-        backgroundSprite.size = CGSize(width: backgroundSprite.size.width * ratioBgSize, height: scene.size.height)
-        backgroundSprite.zPosition = CGFloat(0.0)
-
-        addChild(backgroundSprite)
-    }
-
-    func createBackground2(scene: SKScene) {
-        let backgroundSprite = SKSpriteNode(imageNamed: "Cenario infinito")
-        backgroundSprite.anchorPoint = CGPoint(x: 0, y: 0)
-        backgroundSprite.position = CGPoint(x: self.backgroundSprite.size.width, y: 0)
-        let ratioBgSize = scene.size.height / backgroundSprite.size.height
-        backgroundSprite.size = CGSize(width: backgroundSprite.size.width * ratioBgSize, height: scene.size.height)
-        backgroundSprite.zPosition = CGFloat(0.0)
-
-        addChild(backgroundSprite)
+    func createBackground(scene: SKScene, length: Int) {
+        for _ in 0..<length {
+            backgroundSprite = SKSpriteNode(imageNamed: "Background")
+            backgroundSprite.anchorPoint = CGPoint(x: 0, y: 0)
+            let ratioBgSize = scene.size.height / backgroundSprite.size.height
+            backgroundSprite.size = CGSize(width: backgroundSprite.size.width * ratioBgSize, height: scene.size.height)
+            backgroundSprite.zPosition = CGFloat(0.0)
+            backgroundSprite.position = CGPoint(x: backgroundPositionX, y: 0)
+            backgroundPositionX = backgroundPositionX + backgroundSprite.size.width
+            addChild(backgroundSprite)
+        }
     }
 
     func addCamera(scene: SKScene) {
@@ -115,20 +106,28 @@ extension RunSagRun {
         addChild(touchableJumpArea)
     }
 
-    func createCage(scene: SKScene) {
+    func createCage(scene: SKScene, quantity: Int) {
         let ratio: CGFloat = 0.2
-        cage = SKSpriteNode(imageNamed: "Cage")
-        cage.position = CGPoint(x: scene.size.width / 2, y: 100)
-        cage.zPosition = CGFloat(1.0)
-        cage.size = CGSize(width: cage.size.width * ratio, height: cage.size.height * ratio)
+        let gameLength = Int(ground.size.width)
+        let cagesGap = gameLength / (quantity + 1)
+        var cagePositionX = CGFloat(cagesGap)
 
-        cage.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cage.size.width, height: cage.size.height))
-        cage.physicsBody?.restitution = 0.0
-        cage.physicsBody?.categoryBitMask = cageCategory
-        cage.physicsBody?.collisionBitMask = sagCategory
-        cage.physicsBody?.contactTestBitMask = sagCategory
+        for _ in 1...quantity {
+            cage = SKSpriteNode(imageNamed: "Cage")
+            cage.position = CGPoint(x: cagePositionX, y: sag.position.y)
+            cage.zPosition = CGFloat(1.0)
+            cage.size = CGSize(width: cage.size.width * ratio, height: cage.size.height * ratio)
 
-//        addChild(cage)
+            cage.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cage.size.width, height: cage.size.height))
+            cage.physicsBody?.restitution = 0.0
+            cage.physicsBody?.categoryBitMask = cageCategory
+            cage.physicsBody?.collisionBitMask = sagCategory
+            cage.physicsBody?.contactTestBitMask = sagCategory
+
+            cagePositionX = cagePositionX + CGFloat(cagesGap)
+
+            addChild(cage)
+        }
     }
 
     // MARK: Sag actions
