@@ -32,7 +32,7 @@ extension RunSagRun {
         scoreboard.size = CGSize(width: scoreboard.size.width * ratio, height: scoreboard.size.height * ratio)
 
         userScore = SKLabelNode(fontNamed: "Politica Black")
-        userScore.text = "\(currentScore)"
+        userScore.text = "\(self.currentScore)"
         userScore.position = CGPoint(x: scoreboard.size.width / 2, y: scoreboard.size.height / 2 - 16)
         userScore.fontSize = 40
         userScore.fontColor = .white
