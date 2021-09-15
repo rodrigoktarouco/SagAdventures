@@ -52,7 +52,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         runSag()
 //        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addEnemy), SKAction.wait(forDuration: 4.0)])))
         
-        self.physicsWorld.contactDelegate = self
+        physicsWorld.contactDelegate = self
         
         let backgroundMusic = SKAudioNode(fileNamed: "Mr.ruiZ - Jamaica Jive copy.mp3")
         backgroundMusic.autoplayLooped = true
@@ -123,52 +123,44 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
     } 
     // Enemy position
-    func random() -> CGFloat {
-        return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
-    }
+//    func random() -> CGFloat {
+//        return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+//    }
+//
+//    func random(min: CGFloat, max: CGFloat) -> CGFloat {
+//        return random() * (max - min) + min
+//    }
     
-    func random(min: CGFloat, max: CGFloat) -> CGFloat {
-        return random() * (max - min) + min
-    }
-    
-    func addEnemy() {
-        
-        // Create sprite
-        let lumberjack = SKSpriteNode(imageNamed: "Sag")
-        
-        lumberjack.physicsBody = SKPhysicsBody(rectangleOf: lumberjack.size) // 1
-        lumberjack.physicsBody?.isDynamic = false // 2
-        lumberjack.physicsBody?.categoryBitMask = PhysicsCategory.enemy // 3
-        lumberjack.physicsBody?.contactTestBitMask = PhysicsCategory.projectile // 4
-        lumberjack.physicsBody?.collisionBitMask = PhysicsCategory.none // 5
-        
-        
-        // Where the enemy is going to appear 
-        let actualY =  lumberjack.size.height/2
-        
-        let actualX = size.width + lumberjack.size.width/2
-        
-        lumberjack.position = CGPoint(x: actualX, y: actualY)
-        
-        addChild(lumberjack)
-        
-        // Set enemy speed
-        let actualDuration = random(min: CGFloat(3), max: CGFloat(6))
-        
-        // Create the actions
-        let actionMove = SKAction.move(to: CGPoint(x: -lumberjack.size.width/2, y: actualY),
-                                       duration: TimeInterval(actualDuration))
-        let actionMoveDone = SKAction.removeFromParent()
-        
-        let loseAction = SKAction.run() { [weak self] in
-            guard let `self` = self else { return }
-            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: false)
-            self.view?.presentScene(gameOverScene, transition: reveal)
-        }
-        lumberjack.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
-        
-    }
+//    func addEnemy() {
+//        // Create sprite
+//        let lumberjack = SKSpriteNode(imageNamed: "Sag")
+//
+//        // Where the enemy is going to appear
+//        let actualY =  lumberjack.size.height/2
+//
+//        let actualX = size.width + lumberjack.size.width/2
+//
+//        lumberjack.position = CGPoint(x: actualX, y: actualY)
+//
+//        addChild(lumberjack)
+//
+//        // Set enemy speed
+//        let actualDuration = random(min: CGFloat(3), max: CGFloat(6))
+//
+//        // Create the actions
+//        let actionMove = SKAction.move(to: CGPoint(x: -lumberjack.size.width/2, y: actualY),
+//                                       duration: TimeInterval(actualDuration))
+//        let actionMoveDone = SKAction.removeFromParent()
+//
+//        let loseAction = SKAction.run() { [weak self] in
+//            guard let `self` = self else { return }
+//            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+//            let gameOverScene = GameOverScene(size: self.size, won: false)
+//            self.view?.presentScene(gameOverScene, transition: reveal)
+//        }
+//        lumberjack.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
+//
+//    }
     
     // MARK: Physiscs contact delegate
     func didBegin(_ contact: SKPhysicsContact) {

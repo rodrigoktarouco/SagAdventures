@@ -22,11 +22,16 @@ extension RunSagRun {
                 risall.zPosition = CGFloat(1.0)
 
                 risall.size = CGSize(width: risall.size.width * ratio, height: risall.size.height * ratio)
-
+                
+                risall.physicsBody?.affectedByGravity = false
+                risall.physicsBody?.isDynamic = true
                 risall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: risall.size.width, height: risall.size.height))
                 risall.physicsBody?.restitution = 0.0
                 risall.physicsBody?.categoryBitMask = enemyCategory
-
+                risall.physicsBody?.collisionBitMask = PhysicsCategory.enemy
+                risall.physicsBody?.contactTestBitMask = PhysicsCategory.projectile // // 5
+                
+               
                 enemyPositionX = enemyPositionX + CGFloat(enemiesGap)
 
                 addChild(risall)
