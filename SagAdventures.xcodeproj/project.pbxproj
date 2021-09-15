@@ -28,6 +28,7 @@
 		FA46EC7726EFC9B300ECD9F6 /* RunSagRun.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */; };
 		FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */; };
 		FA4AB06B26F22B6C0065FB4C /* RunSagRunControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB06A26F22B6C0065FB4C /* RunSagRunControls.swift */; };
+		FA4AB06D26F282C30065FB4C /* RunSagRunEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB06C26F282C30065FB4C /* RunSagRunEnemy.swift */; };
 		FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RunSagRun.sks; sourceTree = "<group>"; };
 		FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRun.swift; sourceTree = "<group>"; };
 		FA4AB06A26F22B6C0065FB4C /* RunSagRunControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRunControls.swift; sourceTree = "<group>"; };
+		FA4AB06C26F282C30065FB4C /* RunSagRunEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRunEnemy.swift; sourceTree = "<group>"; };
 		FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRunComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 				FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */,
 				9DA3608826F23CB800AD2166 /* GameOverScene.swift */,
 				FA4AB06A26F22B6C0065FB4C /* RunSagRunControls.swift */,
+				FA4AB06C26F282C30065FB4C /* RunSagRunEnemy.swift */,
 			);
 			path = SagAdventures;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */,
 				FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */,
 				9DB6CA1726EBC81200928E0F /* GameViewController.swift in Sources */,
+				FA4AB06D26F282C30065FB4C /* RunSagRunEnemy.swift in Sources */,
 				9DB6CA0F26EBC81200928E0F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
