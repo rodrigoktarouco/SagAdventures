@@ -43,15 +43,17 @@ extension RunSagRun {
     }
 
     func createBackground(scene: SKScene, length: Int) {
-        for _ in 0..<length {
-            backgroundSprite = SKSpriteNode(imageNamed: "Background")
-            backgroundSprite.anchorPoint = CGPoint(x: 0, y: 0)
-            let ratioBgSize = scene.size.height / backgroundSprite.size.height
-            backgroundSprite.size = CGSize(width: backgroundSprite.size.width * ratioBgSize, height: scene.size.height)
-            backgroundSprite.zPosition = CGFloat(0.0)
-            backgroundSprite.position = CGPoint(x: backgroundPositionX, y: 0)
-            backgroundPositionX = backgroundPositionX + backgroundSprite.size.width
-            addChild(backgroundSprite)
+        if length > 0 {
+            for _ in 1...length {
+                backgroundSprite = SKSpriteNode(imageNamed: "Background")
+                backgroundSprite.anchorPoint = CGPoint(x: 0, y: 0)
+                let ratioBgSize = scene.size.height / backgroundSprite.size.height
+                backgroundSprite.size = CGSize(width: backgroundSprite.size.width * ratioBgSize, height: scene.size.height)
+                backgroundSprite.zPosition = CGFloat(0.0)
+                backgroundSprite.position = CGPoint(x: backgroundPositionX, y: 0)
+                backgroundPositionX = backgroundPositionX + backgroundSprite.size.width
+                addChild(backgroundSprite)
+            }
         }
     }
 
@@ -106,36 +108,38 @@ extension RunSagRun {
         addChild(touchableJumpArea)
     }
 
-    func createCage(scene: SKScene, quantity: Int) {
+    func createCages(quantity: Int) {
         let ratio: CGFloat = 0.2
         let gameLength = Int(ground.size.width)
         let cagesGap = gameLength / (quantity + 1)
         var cagePositionX = CGFloat(cagesGap)
 
-        for _ in 1...quantity {
-            cage = SKSpriteNode(imageNamed: "Cage")
-            cage.position = CGPoint(x: cagePositionX, y: sag.position.y)
-            cage.zPosition = CGFloat(1.0)
-            cage.size = CGSize(width: cage.size.width * ratio, height: cage.size.height * ratio)
+        if quantity > 0 {
+            for _ in 1...quantity {
+                cage = SKSpriteNode(imageNamed: "Cage")
+                cage.position = CGPoint(x: cagePositionX, y: sag.position.y)
+                cage.zPosition = CGFloat(1.0)
+                cage.size = CGSize(width: cage.size.width * ratio, height: cage.size.height * ratio)
 
-            cage.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cage.size.width, height: cage.size.height - 20))
-            cage.physicsBody?.restitution = 0.0
-            cage.physicsBody?.categoryBitMask = cageCategory
-            cage.physicsBody?.collisionBitMask = sagCategory
-            cage.physicsBody?.contactTestBitMask = sagCategory
+                cage.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cage.size.width, height: cage.size.height - 20))
+                cage.physicsBody?.restitution = 0.0
+                cage.physicsBody?.categoryBitMask = cageCategory
+                cage.physicsBody?.collisionBitMask = sagCategory
+                cage.physicsBody?.contactTestBitMask = sagCategory
 
-            let cageTop = SKSpriteNode()
-            cageTop.position = CGPoint(x: 0, y: 1)
-            cageTop.zPosition = CGFloat(1.0)
-            cageTop.size = CGSize(width: cage.size.width + 20, height: 10)
-            cageTop.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cageTop.size.width, height: cageTop.size.height))
-            cageTop.physicsBody?.restitution = 0.0
+                let cageTop = SKSpriteNode()
+                cageTop.position = CGPoint(x: 0, y: 1)
+                cageTop.zPosition = CGFloat(1.0)
+                cageTop.size = CGSize(width: cage.size.width + 20, height: 10)
+                cageTop.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: cageTop.size.width, height: cageTop.size.height))
+                cageTop.physicsBody?.restitution = 0.0
 
-            cage.addChild(cageTop)
+                cage.addChild(cageTop)
 
-            cagePositionX = cagePositionX + CGFloat(cagesGap)
+                cagePositionX = cagePositionX + CGFloat(cagesGap)
 
-            addChild(cage)
+                addChild(cage)
+            }
         }
     }
 
