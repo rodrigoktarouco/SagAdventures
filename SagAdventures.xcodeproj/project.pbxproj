@@ -27,6 +27,7 @@
 		9DE4E93826EFC64500FE8C6A /* POLITICA-BOLD.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E93026EFC64500FE8C6A /* POLITICA-BOLD.otf */; };
 		FA46EC7726EFC9B300ECD9F6 /* RunSagRun.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */; };
 		FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */; };
+		FA4AB06B26F22B6C0065FB4C /* RunSagRunControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB06A26F22B6C0065FB4C /* RunSagRunControls.swift */; };
 		FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		9DE4E93026EFC64500FE8C6A /* POLITICA-BOLD.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POLITICA-BOLD.otf"; sourceTree = "<group>"; };
 		FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RunSagRun.sks; sourceTree = "<group>"; };
 		FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRun.swift; sourceTree = "<group>"; };
+		FA4AB06A26F22B6C0065FB4C /* RunSagRunControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRunControls.swift; sourceTree = "<group>"; };
 		FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRunComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 				FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */,
 				FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */,
 				9DA3608826F23CB800AD2166 /* GameOverScene.swift */,
+				FA4AB06A26F22B6C0065FB4C /* RunSagRunControls.swift */,
 			);
 			path = SagAdventures;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				8061FE0126EBD9030072C04C /* DefinedGameScene.swift in Sources */,
 				9DB6CA1526EBC81200928E0F /* GameScene.swift in Sources */,
 				9DA3608926F23CB800AD2166 /* GameOverScene.swift in Sources */,
+				FA4AB06B26F22B6C0065FB4C /* RunSagRunControls.swift in Sources */,
 				FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */,
 				FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */,
 				9DB6CA1726EBC81200928E0F /* GameViewController.swift in Sources */,
