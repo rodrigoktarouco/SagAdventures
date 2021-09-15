@@ -15,8 +15,6 @@
 		9DB6CA1726EBC81200928E0F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6CA1626EBC81200928E0F /* GameViewController.swift */; };
 		9DB6CA1A26EBC81200928E0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB6CA1826EBC81200928E0F /* Main.storyboard */; };
 		9DB6CA1C26EBC81300928E0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DB6CA1B26EBC81300928E0F /* Assets.xcassets */; };
-		FA46EC7726EFC9B300ECD9F6 /* RunSagRun.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */; };
-		FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */; };
 		9DE4E93126EFC64500FE8C6A /* politicaextrabold.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E92926EFC64500FE8C6A /* politicaextrabold.png */; };
 		9DE4E93226EFC64500FE8C6A /* Politica Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E92A26EFC64500FE8C6A /* Politica Bold.otf */; };
 		9DE4E93326EFC64500FE8C6A /* POLITICA-BLACK.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E92B26EFC64500FE8C6A /* POLITICA-BLACK.otf */; };
@@ -25,6 +23,9 @@
 		9DE4E93626EFC64500FE8C6A /* POLITICA-EXTRABOLD.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E92E26EFC64500FE8C6A /* POLITICA-EXTRABOLD.otf */; };
 		9DE4E93726EFC64500FE8C6A /* POLITICA-BOLDITALIC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E92F26EFC64500FE8C6A /* POLITICA-BOLDITALIC.otf */; };
 		9DE4E93826EFC64500FE8C6A /* POLITICA-BOLD.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DE4E93026EFC64500FE8C6A /* POLITICA-BOLD.otf */; };
+		FA46EC7726EFC9B300ECD9F6 /* RunSagRun.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */; };
+		FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */; };
+		FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +39,6 @@
 		9DB6CA1926EBC81200928E0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9DB6CA1B26EBC81300928E0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DB6CA1D26EBC81300928E0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RunSagRun.sks; sourceTree = "<group>"; };
-		FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRun.swift; sourceTree = "<group>"; };
 		9DE4E92926EFC64500FE8C6A /* politicaextrabold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = politicaextrabold.png; sourceTree = "<group>"; };
 		9DE4E92A26EFC64500FE8C6A /* Politica Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Politica Bold.otf"; sourceTree = "<group>"; };
 		9DE4E92B26EFC64500FE8C6A /* POLITICA-BLACK.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POLITICA-BLACK.otf"; sourceTree = "<group>"; };
@@ -48,6 +47,9 @@
 		9DE4E92E26EFC64500FE8C6A /* POLITICA-EXTRABOLD.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POLITICA-EXTRABOLD.otf"; sourceTree = "<group>"; };
 		9DE4E92F26EFC64500FE8C6A /* POLITICA-BOLDITALIC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POLITICA-BOLDITALIC.otf"; sourceTree = "<group>"; };
 		9DE4E93026EFC64500FE8C6A /* POLITICA-BOLD.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POLITICA-BOLD.otf"; sourceTree = "<group>"; };
+		FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RunSagRun.sks; sourceTree = "<group>"; };
+		FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRun.swift; sourceTree = "<group>"; };
+		FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRunComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				9DB6CA1D26EBC81300928E0F /* Info.plist */,
 				FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */,
 				FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */,
+				FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */,
 			);
 			path = SagAdventures;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				8061FE0126EBD9030072C04C /* DefinedGameScene.swift in Sources */,
 				9DB6CA1526EBC81200928E0F /* GameScene.swift in Sources */,
 				FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */,
+				FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */,
 				9DB6CA1726EBC81200928E0F /* GameViewController.swift in Sources */,
 				9DB6CA0F26EBC81200928E0F /* AppDelegate.swift in Sources */,
 			);
