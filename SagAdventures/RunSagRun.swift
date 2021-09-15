@@ -60,9 +60,10 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         guard let scene = scene else { return }
 
-        if sag.position.x > gameCamera.position.x {
-            gameCamera.position.x = sag.position.x
-            touchableJumpArea.position.x = sag.position.x - scene.size.width / 2
+        let sagRefPosition = sag.position.x + 220
+        if sagRefPosition > gameCamera.position.x {
+            gameCamera.position.x = sagRefPosition
+            touchableJumpArea.position.x = sagRefPosition - scene.size.width / 2
             pauseButton.position.x = touchableJumpArea.position.x + 50
             scoreboard.position.x = touchableJumpArea.position.x + 650
         }

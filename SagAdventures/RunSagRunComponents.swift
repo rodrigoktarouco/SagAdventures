@@ -43,7 +43,7 @@ extension RunSagRun {
     }
 
     func createBackground(scene: SKScene) {
-        backgroundSprite = SKSpriteNode(imageNamed: "Cenario")
+        backgroundSprite = SKSpriteNode(imageNamed: "Cenario infinito")
         backgroundSprite.anchorPoint = CGPoint(x: 0, y: 0)
         backgroundSprite.position = CGPoint(x: 0, y: 0)
         let ratioBgSize = scene.size.height / backgroundSprite.size.height
@@ -64,8 +64,7 @@ extension RunSagRun {
         guard let view = view else { return }
         ground.position = CGPoint(x: view.bounds.minX, y: view.bounds.minY)
         ground.zPosition = CGFloat(1.0)
-        ground.size = CGSize(width: 6000, height: 160)
-        ground.color = .blue
+        ground.size = CGSize(width: 25000, height: 160)
 
         ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
         ground.physicsBody?.isDynamic = false
@@ -76,7 +75,7 @@ extension RunSagRun {
 
     func createSag(scene: SKScene) {
         sag = SKSpriteNode(imageNamed: "Sag")
-        sag.position = CGPoint(x: 30, y: 200)
+        sag.position = CGPoint(x: 30, y: 160)
         sag.zPosition = CGFloat(1.0)
         sag.size.width = CGFloat(123.0)
         sag.size.height = CGFloat(128.0)
@@ -124,7 +123,7 @@ extension RunSagRun {
     // MARK: Sag actions
     func runSag() {
         let moveAction = SKAction.moveBy(x: 2, y: 0, duration: 0.01)
-        let repeatAction = SKAction.repeat(moveAction, count: 1200)
+        let repeatAction = SKAction.repeat(moveAction, count: 8192)
         sag.run(SKAction.repeatForever(SKAction.animate(with: sagRunning, timePerFrame: 0.1)))
         sag.run(repeatAction)
     }
