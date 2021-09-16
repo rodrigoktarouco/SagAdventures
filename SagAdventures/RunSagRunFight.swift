@@ -40,7 +40,7 @@ extension RunSagRun {
 
     func enemyAppearance() {
         let ratio: CGFloat = 0.7
-        let enemyPositionX = CGFloat(13800)
+        let enemyPositionX = CGFloat(11400)
 
         enemy = SKSpriteNode(imageNamed: "Risall")
         enemy.position = CGPoint(x: enemyPositionX, y: 160)
@@ -84,7 +84,22 @@ extension RunSagRun {
         }
     }
 
-    func sagHit() {
-        print("Sag se deu mal")
+    func createSagDead() {
+        let ratio: CGFloat = 0.24
+        sagDead = SKSpriteNode(imageNamed: "Sag Dead")
+        sagDead.position = CGPoint(x: sag.position.x - 10, y: sag.position.y + 20)
+        sagDead.zPosition = CGFloat(1.0)
+        sagDead.size = CGSize(width: sagDead.size.width * ratio, height: sagDead.size.height * ratio)
+    }
+
+    func sagDies() {
+        sag.removeAllActions()
+        createSagDead()
+        sag.removeFromParent()
+        addChild(sagDead)
+
+        let moveAction = SKAction.moveBy(x: 0, y: 1.5, duration: 0.05)
+        let repeatAction = SKAction.repeat(moveAction, count: 600)
+        sagDead.run(repeatAction)
     }
 }

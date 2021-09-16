@@ -25,6 +25,8 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     var sag = SKSpriteNode()
     var sagRunning = [SKTexture]()
     var projectile = SKSpriteNode()
+    var sagDead = SKSpriteNode()
+    var isSagDead = false
     
     // MARK: UI elements
     var pauseButton = SKSpriteNode()
@@ -44,7 +46,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     var enemy = SKSpriteNode()
     var enemyRunning = [SKTexture]()
     var enemyCreated = false
-    var enemyHealth = 10
+    var enemyHealth = 22
     
     override func didMove(to view: SKView) {
         guard let scene = self.scene else { return }
@@ -81,13 +83,21 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
             scoreboard.position.x = touchableJumpArea.position.x + 650
         }
 
-        if sag.position.x > 12800 && !enemyCreated {
+        if sag.position.x > 10000 && !enemyCreated {
             enemyAppearance()
             enemyCreated = true
         }
 
         if currentScore > enemyHealth {
             finishTheGame()
+        }
+
+        if isSagDead {
+            sagDies()
+            isSagDead.toggle()
+
+            let secondsToDelay = 3.0
+            perform(#selector(delayedFunction), with: nil, afterDelay: secondsToDelay)
         }
     }
     
@@ -129,12 +139,12 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
 
         // MARK: - Sag touches the cage
         if collision == sagCategory | cageCategory {
-            sagHit()
+            isSagDead = true
         }
 
         // MARK: - Sag touches the enemy
         if collision == sagCategory | enemyCategory {
-            sagHit()
+            isSagDead = true
         }
 
         // MARK: - Orange hits the enemy
@@ -147,5 +157,9 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
         let gameOverScene = GameOverScene(size: self.size, won: true)
         view?.presentScene(gameOverScene, transition: reveal)
+    }
+
+    @objc func delayedFunction() {
+        self.finishTheGame()
     }
 }
