@@ -7,13 +7,14 @@
 
 import SpriteKit
 import GameplayKit
+import UIKit
 
-struct PhysicsCategory {
-    static let none: UInt32 = 0
-    static let all: UInt32 = UInt32.max
-    static let enemy: UInt32 = 0b1            // 1
-    static let projectile: UInt32 = 0b10      // 2
-}
+//struct PhysicsCategory {
+//    static let none: UInt32 = 0
+//    static let all: UInt32 = UInt32.max
+//    static let enemy: UInt32 = 0b1            // 1
+//    static let projectile: UInt32 = 0b10      // 2
+//}
 
 class RunSagRun: SKScene, SKPhysicsContactDelegate {
     // MARK: Visual elements
@@ -47,7 +48,9 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         guard let scene = self.scene else { return }
-        ObserveForGameControllers()
+
+        observeForGameControllers()
+        addSwipeRecognizers(view: view)
 
         createBackground(scene: scene, length: 12)
         addCamera(scene: scene)
@@ -110,6 +113,14 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
 
         // MARK: - Throw projectile based on touch
         throwProjectileTouch(touchLocation: touchLocation)
+    }
+
+    // MARK: - Rotate Sag actions
+    @objc func swipeLeft(sender: UISwipeGestureRecognizer) {
+        rotateSag(by: 0.5)
+    }
+    @objc func swipeRight(sender: UISwipeGestureRecognizer) {
+        rotateSag(by: -0.5)
     }
 
     // MARK: Physiscs contact delegate

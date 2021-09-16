@@ -160,4 +160,17 @@ extension RunSagRun {
         let rotateAction = SKAction.rotate(byAngle: CGFloat(radians), duration: 0.2)
         sag.run(rotateAction)
     }
+
+    func throwOrange(aim: Double) {
+        createProjectile()
+        addChild(projectile)
+
+        let direction = CGPoint(x: CGFloat(1.0), y: CGFloat(aim))
+        let shootAmount = direction * 1000
+        let realDest = shootAmount + projectile.position
+
+        let actionMove = SKAction.move(to: realDest, duration: 2.0)
+        let actionMoveDone = SKAction.removeFromParent()
+        projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+    }
 }

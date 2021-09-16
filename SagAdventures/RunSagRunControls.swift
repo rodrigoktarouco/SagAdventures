@@ -10,7 +10,19 @@ import GameplayKit
 import GameController
 
 extension RunSagRun {
-    func ObserveForGameControllers() {
+    // MARK: Swipe Gesture Recognizers
+    func addSwipeRecognizers(view: SKView) {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(RunSagRun.swipeRight(sender:)))
+        swipeRight.direction = .right
+        view.addGestureRecognizer(swipeRight)
+
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(RunSagRun.swipeLeft(sender:)))
+        swipeLeft.direction = .left
+        view.addGestureRecognizer(swipeLeft)
+    }
+
+    // MARK: Controllers observers
+    func observeForGameControllers() {
         NotificationCenter.default.addObserver(self, selector: #selector(connectControllers), name: NSNotification.Name.GCControllerDidConnect, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(disconnectControllers), name: NSNotification.Name.GCControllerDidDisconnect, object: nil)
     }
@@ -68,18 +80,5 @@ extension RunSagRun {
         let yCoordinate = Double(direcional.yAxis.value)
 
         return yCoordinate
-    }
-
-    func throwOrange(aim: Double) {
-        createProjectile()
-        addChild(projectile)
-
-        let direction = CGPoint(x: CGFloat(1.0), y: CGFloat(aim))
-        let shootAmount = direction * 1000
-        let realDest = shootAmount + projectile.position
-
-        let actionMove = SKAction.move(to: realDest, duration: 2.0)
-        let actionMoveDone = SKAction.removeFromParent()
-        projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
 }
