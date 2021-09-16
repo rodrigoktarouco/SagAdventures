@@ -24,6 +24,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     var ground = SKSpriteNode()
     var sag = SKSpriteNode()
     var sagRunning = [SKTexture]()
+    var sagGhost = [SKTexture]()
     var projectile = SKSpriteNode()
     var sagDead = SKSpriteNode()
     var isSagDead = false
@@ -96,7 +97,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
             sagDies()
             isSagDead.toggle()
 
-            let secondsToDelay = 3.0
+            let secondsToDelay = 5.0
             perform(#selector(delayedFunction), with: nil, afterDelay: secondsToDelay)
         }
     }

@@ -90,6 +90,12 @@ extension RunSagRun {
         sagDead.position = CGPoint(x: sag.position.x - 10, y: sag.position.y + 20)
         sagDead.zPosition = CGFloat(1.0)
         sagDead.size = CGSize(width: sagDead.size.width * ratio, height: sagDead.size.height * ratio)
+
+        let textureAtlas = SKTextureAtlas(named: "SagGhost")
+        for index in 0..<textureAtlas.textureNames.count {
+            let textureName = "Ghost\(index)"
+            sagGhost.append(textureAtlas.textureNamed(textureName))
+        }
     }
 
     func sagDies() {
@@ -100,6 +106,7 @@ extension RunSagRun {
 
         let moveAction = SKAction.moveBy(x: 0, y: 1.5, duration: 0.05)
         let repeatAction = SKAction.repeat(moveAction, count: 600)
+        sagDead.run(SKAction.repeatForever(SKAction.animate(with: sagGhost, timePerFrame: 0.1)))
         sagDead.run(repeatAction)
     }
 }
