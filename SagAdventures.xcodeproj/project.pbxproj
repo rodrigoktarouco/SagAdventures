@@ -120,9 +120,9 @@
 				FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */,
 				FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */,
 				FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */,
+				FA4AB06C26F282C30065FB4C /* RunSagRunFight.swift */,
 				9DA3608826F23CB800AD2166 /* GameOverScene.swift */,
 				FA4AB06A26F22B6C0065FB4C /* RunSagRunControls.swift */,
-				FA4AB06C26F282C30065FB4C /* RunSagRunFight.swift */,
 			);
 			path = SagAdventures;
 			sourceTree = "<group>";
