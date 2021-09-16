@@ -68,7 +68,7 @@ extension RunSagRun {
         guard let view = view else { return }
         ground.position = CGPoint(x: view.bounds.minX, y: view.bounds.minY)
         ground.zPosition = CGFloat(1.0)
-        ground.size = CGSize(width: 25000, height: 160)
+        ground.size = CGSize(width: 50000, height: 160)
 
         ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
         ground.physicsBody?.isDynamic = false
@@ -110,7 +110,8 @@ extension RunSagRun {
 
     func createCages(quantity: Int) {
         let ratio: CGFloat = 0.2
-        let gameLength = Int(ground.size.width)
+        let gameLength = Int(ground.size.width / 4)
+        print(gameLength)
         let cagesGap = gameLength / (quantity + 1)
         var cagePositionX = CGFloat(cagesGap)
 
@@ -146,7 +147,7 @@ extension RunSagRun {
     // MARK: Sag actions
     func runSag() {
         let moveAction = SKAction.moveBy(x: 2, y: 0, duration: 0.01)
-        let repeatAction = SKAction.repeat(moveAction, count: 8192)
+        let repeatAction = SKAction.repeat(moveAction, count: 20000)
         sag.run(SKAction.repeatForever(SKAction.animate(with: sagRunning, timePerFrame: 0.1)))
         sag.run(repeatAction)
     }
