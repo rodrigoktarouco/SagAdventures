@@ -16,8 +16,8 @@ class StartGameScene: SKScene {
 
     override func didMove(to view: SKView) {
         createBackground(view: view)
-        addAboutGameButton(view: view)
         addStartGameButton(view: view)
+        addAboutGameButton(view: view)
         addSettingsButton(view: view)
     }
 
@@ -30,28 +30,28 @@ class StartGameScene: SKScene {
         addChild(initialBackground)
     }
 
-    func addAboutGameButton(view: SKView) {
-        let ratio: CGFloat = 0.55
-        aboutGameButton = SKSpriteNode(imageNamed: "About Button")
-        aboutGameButton.name = "About"
-        aboutGameButton.anchorPoint = CGPoint(x: 1, y: 1)
-        aboutGameButton.position = CGPoint(x: view.bounds.maxX - 70, y: view.bounds.maxY - 60)
-        aboutGameButton.zPosition = CGFloat(2.0)
-        aboutGameButton.size = CGSize(width: aboutGameButton.size.width * ratio, height: aboutGameButton.size.height * ratio)
-
-        addChild(aboutGameButton)
-    }
-
     func addStartGameButton(view: SKView) {
         let ratio: CGFloat = 0.55
         startGameButton = SKSpriteNode(imageNamed: "Start Game Button")
         startGameButton.name = "Start"
         startGameButton.anchorPoint = CGPoint(x: 1, y: 1)
-        startGameButton.position = CGPoint(x: aboutGameButton.frame.maxX, y: aboutGameButton.frame.minY - 20)
+        startGameButton.position = CGPoint(x: view.bounds.maxX - 70, y: view.bounds.maxY - 60)
         startGameButton.zPosition = CGFloat(2.0)
         startGameButton.size = CGSize(width: startGameButton.size.width * ratio, height: startGameButton.size.height * ratio)
 
         addChild(startGameButton)
+    }
+
+    func addAboutGameButton(view: SKView) {
+        let ratio: CGFloat = 0.55
+        aboutGameButton = SKSpriteNode(imageNamed: "About Button")
+        aboutGameButton.name = "About"
+        aboutGameButton.anchorPoint = CGPoint(x: 1, y: 1)
+        aboutGameButton.position = CGPoint(x: startGameButton.frame.maxX, y: startGameButton.frame.minY - 20)
+        aboutGameButton.zPosition = CGFloat(2.0)
+        aboutGameButton.size = CGSize(width: aboutGameButton.size.width * ratio, height: aboutGameButton.size.height * ratio)
+
+        addChild(aboutGameButton)
     }
 
     func addSettingsButton(view: SKView) {
