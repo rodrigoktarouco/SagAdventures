@@ -56,6 +56,12 @@ extension RunSagRun {
         enemy.physicsBody?.collisionBitMask = sagCategory
         enemy.physicsBody?.contactTestBitMask = sagCategory
 
+        let textureAtlas = SKTextureAtlas(named: "RisallRunning")
+        for index in 0..<textureAtlas.textureNames.count {
+            let textureName = "Risall\(index)"
+            enemyRunning.append(textureAtlas.textureNamed(textureName))
+        }
+
         addChild(enemy)
         enemyRun()
     }
@@ -63,7 +69,7 @@ extension RunSagRun {
     func enemyRun() {
         let moveAction = SKAction.moveBy(x: 2, y: 0, duration: 0.012)
         let repeatAction = SKAction.repeat(moveAction, count: 20000)
-//        enemy.run(SKAction.repeatForever(SKAction.animate(with: enemyRunning, timePerFrame: 0.1)))
+        enemy.run(SKAction.repeatForever(SKAction.animate(with: enemyRunning, timePerFrame: 0.1)))
         enemy.run(repeatAction)
     }
 
