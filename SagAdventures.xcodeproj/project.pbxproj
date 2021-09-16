@@ -29,6 +29,7 @@
 		FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */; };
 		FA4AB06B26F22B6C0065FB4C /* RunSagRunControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB06A26F22B6C0065FB4C /* RunSagRunControls.swift */; };
 		FA4AB06D26F282C30065FB4C /* RunSagRunFight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB06C26F282C30065FB4C /* RunSagRunFight.swift */; };
+		FA6EB3E926F392ED00F37B61 /* StartGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6EB3E826F392ED00F37B61 /* StartGameScene.swift */; };
 		FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRun.swift; sourceTree = "<group>"; };
 		FA4AB06A26F22B6C0065FB4C /* RunSagRunControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRunControls.swift; sourceTree = "<group>"; };
 		FA4AB06C26F282C30065FB4C /* RunSagRunFight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRunFight.swift; sourceTree = "<group>"; };
+		FA6EB3E826F392ED00F37B61 /* StartGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameScene.swift; sourceTree = "<group>"; };
 		FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSagRunComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 				9DB6CA1826EBC81200928E0F /* Main.storyboard */,
 				9DB6CA1B26EBC81300928E0F /* Assets.xcassets */,
 				9DB6CA1D26EBC81300928E0F /* Info.plist */,
+				FA6EB3E826F392ED00F37B61 /* StartGameScene.swift */,
 				FA46EC7626EFC9B300ECD9F6 /* RunSagRun.sks */,
 				FA46EC7826EFCD0700ECD9F6 /* RunSagRun.swift */,
 				FACBC08E26F1344800E869BD /* RunSagRunComponents.swift */,
@@ -230,6 +233,7 @@
 				FA46EC7926EFCD0700ECD9F6 /* RunSagRun.swift in Sources */,
 				FACBC08F26F1344800E869BD /* RunSagRunComponents.swift in Sources */,
 				9DB6CA1726EBC81200928E0F /* GameViewController.swift in Sources */,
+				FA6EB3E926F392ED00F37B61 /* StartGameScene.swift in Sources */,
 				FA4AB06D26F282C30065FB4C /* RunSagRunFight.swift in Sources */,
 				9DB6CA0F26EBC81200928E0F /* AppDelegate.swift in Sources */,
 			);
