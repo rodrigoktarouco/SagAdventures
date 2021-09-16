@@ -63,7 +63,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         createTouchableJumpArea(scene: scene)
         createCages(quantity: 14)
         runSag()
-
+      
         physicsWorld.contactDelegate = self
 
         let backgroundMusic = SKAudioNode(fileNamed: "Mr.ruiZ - Jamaica Jive copy.mp3")
@@ -153,7 +153,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
             enemyHit()
         }
     }
-    
+
     func finishTheGame() {
         let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
         let gameOverScene = GameOverScene(size: self.size, won: true)
