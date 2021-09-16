@@ -71,18 +71,11 @@ extension RunSagRun {
     }
 
     func throwOrange(aim: Double) {
-        let projectile = SKSpriteNode(imageNamed: "Orange")
-        projectile.size = CGSize(width: projectile.size.width * 0.5, height: projectile.size.height * 0.5)
-        projectile.position = CGPoint(x: sag.position.x + 36, y: sag.position.y - 6)
-        projectile.zPosition = CGFloat(1.5)
-        projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width * 0.6)
-
+        createProjectile()
         addChild(projectile)
 
         let direction = CGPoint(x: CGFloat(1.0), y: CGFloat(aim))
-
         let shootAmount = direction * 1000
-
         let realDest = shootAmount + projectile.position
 
         let actionMove = SKAction.move(to: realDest, duration: 2.0)
