@@ -24,6 +24,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     var sag = SKSpriteNode()
     var sagRunning = [SKTexture]()
     var cage = SKSpriteNode()
+    var lumberjack = SKSpriteNode()
     
     // MARK: UI elements
     var pauseButton = SKSpriteNode()
@@ -47,13 +48,13 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         createTouchableJumpArea(scene: scene)
         createCage(scene: scene, quantity: 10)
         runSag()
-//        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addEnemy), SKAction.wait(forDuration: 4.0)])))
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addEnemy), SKAction.wait(forDuration: 4.0)])))
         
         self.physicsWorld.contactDelegate = self
         
         let backgroundMusic = SKAudioNode(fileNamed: "Mr.ruiZ - Jamaica Jive copy.mp3")
         backgroundMusic.autoplayLooped = true
-//        addChild(backgroundMusic)
+        addChild(backgroundMusic)
         
     }
     
@@ -129,23 +130,26 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
     }
     
     func addEnemy() {
-        
         // Create sprite
-        let lumberjack = SKSpriteNode(imageNamed: "Sag")
+        let lumberjack = SKSpriteNode(imageNamed: "Risall")
         
         lumberjack.physicsBody = SKPhysicsBody(rectangleOf: lumberjack.size) // 1
+        lumberjack.physicsBody?.affectedByGravity = false
         lumberjack.physicsBody?.isDynamic = false // 2
         lumberjack.physicsBody?.categoryBitMask = PhysicsCategory.enemy // 3
         lumberjack.physicsBody?.contactTestBitMask = PhysicsCategory.projectile // 4
         lumberjack.physicsBody?.collisionBitMask = PhysicsCategory.none // 5
-        
+        lumberjack.size = CGSize(width: sag.size.width, height: sag.size.height * 1.5)
         
         // Where the enemy is going to appear 
-        let actualY =  lumberjack.size.height/2
         
-        let actualX = size.width + lumberjack.size.width/2
+        //        let actualX = size.width + lumberjack.size.width/2
+        //        lumberjack.position = CGPoint(x: actualX, y: actualY)
+        lumberjack.position = CGPoint(x: CGFloat(UIScreen.main.bounds.maxX + lumberjack.size.width + 50), y: 160)
+        let actualY =  lumberjack.position.y
         
-        lumberjack.position = CGPoint(x: actualX, y: actualY)
+        print("posSL>>>>>> \(sag.position) e \(lumberjack.position)")
+        print("posLumbX >>>\(lumberjack.position.x)")
         
         addChild(lumberjack)
         
@@ -160,7 +164,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         let loseAction = SKAction.run() { [weak self] in
             guard let `self` = self else { return }
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: false)
+            let gameOverScene = GameOverScene(size: self.size, didWin: false, playAgain: 1)
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
         lumberjack.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
@@ -201,7 +205,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         enemy.removeFromParent()
         if self.currentScore >= 4 {
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: true)
+            let gameOverScene = GameOverScene(size: self.size, didWin: true, playAgain: 1)
             view?.presentScene(gameOverScene, transition: reveal)
         }
     }
