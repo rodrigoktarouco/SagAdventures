@@ -9,13 +9,6 @@ import SpriteKit
 import GameplayKit
 import UIKit
 
-//struct PhysicsCategory {
-//    static let none: UInt32 = 0
-//    static let all: UInt32 = UInt32.max
-//    static let enemy: UInt32 = 0b1            // 1
-//    static let projectile: UInt32 = 0b10      // 2
-//}
-
 class RunSagRun: SKScene, SKPhysicsContactDelegate {
     // MARK: Visual elements
     var backgroundPositionX: CGFloat = 0.0
@@ -90,7 +83,7 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         }
 
         if currentScore > enemyHealth {
-            finishTheGame()
+            finishTheGame(sagWins: true)
         }
 
         if isSagDead {
@@ -154,13 +147,14 @@ class RunSagRun: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    func finishTheGame() {
+    // MARK: Eng game
+    func finishTheGame(sagWins: Bool) {
         let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-        let gameOverScene = GameOverScene(size: self.size, won: true)
+        let gameOverScene = GameOverScene(size: self.size, didWin: sagWins, playAgain: 1)
         view?.presentScene(gameOverScene, transition: reveal)
     }
 
     @objc func delayedFunction() {
-        self.finishTheGame()
+        self.finishTheGame(sagWins: false)
     }
 }
