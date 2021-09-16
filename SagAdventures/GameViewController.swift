@@ -14,6 +14,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // MARK: Gameplay screen
 //        if let view = self.view as! SKView? {
 //            if let scene = SKScene(fileNamed: "RunSagRun") {
 //                scene.scaleMode = .aspectFill
@@ -22,11 +23,12 @@ class GameViewController: UIViewController {
 //            }
 //
 //            view.ignoresSiblingOrder = true
-//            view.showsFPS = true
-//            view.showsNodeCount = true
-//            view.showsPhysics = true
+//            view.showsFPS = false
+//            view.showsNodeCount = false
+//            view.showsPhysics = false
 //        }
 
+        // MARK: Start screen
         let scene = StartGameScene(size: view.bounds.size)
         let skView = view as! SKView
         scene.scaleMode = .resizeFill

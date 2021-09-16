@@ -17,7 +17,7 @@ class GameOverScene: SKScene {
     
     required init?(coder aDecoder: NSCoder) { fatalError("LevelEnd init not implemented") }
     
-    init(size: CGSize, didWin: Bool, playAgain: Int) {
+        init(size: CGSize, didWin: Bool, playAgain: Int) {
         self.didWin = didWin
         levelToSend = didWin ? playAgain : playAgain - 1
         super.init(size: size)
