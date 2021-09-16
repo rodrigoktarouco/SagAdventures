@@ -109,7 +109,7 @@ extension RunSagRun {
     }
 
     func createCages(quantity: Int) {
-        let ratio: CGFloat = 0.2
+        var ratio: CGFloat = 0.2
         let gameLength = Int(ground.size.width / 4)
         print(gameLength)
         let cagesGap = gameLength / (quantity + 1)
@@ -117,6 +117,7 @@ extension RunSagRun {
 
         if quantity > 0 {
             for _ in 1...quantity {
+                ratio = CGFloat(Float.random(in: 0.1..<0.45))
                 cage = SKSpriteNode(imageNamed: "Cage")
                 cage.position = CGPoint(x: cagePositionX, y: sag.position.y)
                 cage.zPosition = CGFloat(1.0)
